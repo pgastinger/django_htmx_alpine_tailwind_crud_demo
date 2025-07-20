@@ -1,5 +1,10 @@
 # Django demo with htmx, alpinejs and tailwind css
 
+<img width="1166" height="451" alt="image" src="https://github.com/user-attachments/assets/ed465360-4e57-45e0-997d-cac38844de70" />
+<img width="1178" height="719" alt="image" src="https://github.com/user-attachments/assets/a775d1b8-f25e-448b-a2a4-f439cecde2d1" />
+<img width="1012" height="409" alt="image" src="https://github.com/user-attachments/assets/2f024792-ffef-45d0-b926-b52b5911d55c" />
+
+
 ## How to run
 
 - commands
