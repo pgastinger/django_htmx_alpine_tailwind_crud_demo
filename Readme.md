@@ -1,8 +1,28 @@
 # Django demo with htmx, alpinejs and tailwind css
 
+
+## Screenshots 
+
 <img width="1166" height="451" alt="image" src="https://github.com/user-attachments/assets/ed465360-4e57-45e0-997d-cac38844de70" />
 <img width="1178" height="719" alt="image" src="https://github.com/user-attachments/assets/a775d1b8-f25e-448b-a2a4-f439cecde2d1" />
 <img width="1012" height="409" alt="image" src="https://github.com/user-attachments/assets/2f024792-ffef-45d0-b926-b52b5911d55c" />
+
+
+- Python 3.12.3
+```
+pip list
+Package     Version
+----------- -------
+asgiref     3.9.1
+Django      5.2.4
+django-htmx 1.23.2
+pip         24.0
+sqlparse    0.5.3
+```
+
+- alpinejs 3.14.9
+- tailwindcss 4.1.11
+- htmx 2.0.6 (included in the django package)
 
 
 ## How to run
@@ -83,7 +103,7 @@ WARNING: This is a development server. Do not use it in a production setting. Us
 For more information on production servers see: https://docs.djangoproject.com/en/5.2/howto/deployment/
 ```
 
-- Update tailwind css
+- Update tailwind css (optional after changes)
 
 ```bash
 npm install tailwindcss @tailwindcss/cli
