@@ -1,0 +1,19 @@
+{% load static %}
+{% load django_htmx %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Django HTMX CRUD</title>
+    <link href="{% static 'css/main.css' %}" rel="stylesheet">
+     {% htmx_script %}
+    <script src="https://unpkg.com/alpinejs" defer></script>
+</head>
+<body class="bg-gray-100 font-sans" hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
+    <div class="container mx-auto mt-10">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!-- This partial represents a single task in the list -->
+<div id="task-{{ task.pk }}" class="flex items-center justify-between p-4 border-b hover:bg-gray-50 transition duration-150">
+    <div class="flex items-center">
+        <input type="checkbox" {% if task.completed %}checked{% endif %} 
+               hx-post="{% url 'task-update' task.pk %}" 
+               hx-target="#task-{{ task.pk }}" 
+               hx-swap="outerHTML"
+               name="completed"
+               class="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500">
+        <span class="ml-3 text-lg {% if task.completed %}line-through text-gray-500{% endif %}">{{ task.title }}</span>
+    </div>
+    <div class="flex items-center space-x-3">
+        <button hx-get="{% url 'task-update' task.pk %}" hx-target="#modal-content" hx-swap="innerHTML"
+                @click="showModal = true" class="text-blue-500 hover:text-blue-700 font-semibold">
+            Edit
+        </button>
+        <button hx-post="{% url 'task-delete' task.pk %}" hx-target="#task-{{ task.pk }}" hx-swap="outerHTML"
+                hx-confirm="Are you sure you want to delete this task?" class="text-red-500 hover:text-red-700 font-semibold">
+            Delete
+        </button>
+    </div>
+</div>

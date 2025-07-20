@@ -1,0 +1,30 @@
+<!-- 
+  This form is loaded into the modal.
+  NOTE: The problematic <script> block has been completely removed from this file.
+  The form now relies on the HX-Trigger header sent from the view to close the modal.
+-->
+<form hx-post="{{ request.path }}" hx-swap="none">
+    {% csrf_token %}
+    <h3 class="text-2xl font-semibold mb-6 text-gray-800">{% if task %}Edit Task{% else %}Add New Task{% endif %}</h3>
+    
+    <div class="mb-4">
+        <label for="id_title" class="block text-gray-700 text-sm font-bold mb-2">Title</label>
+        {{ form.title }}
+    </div>
+
+    <div class="mb-6">
+        <label class="inline-flex items-center cursor-pointer">
+            {{ form.completed }}
+            <span class="ml-2 text-gray-700">Completed</span>
+        </label>
+    </div>
+
+    <div class="flex items-center justify-end space-x-4">
+        <button type="button" @click="showModal = false" class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded transition duration-300">
+            Cancel
+        </button>
+        <button type="submit" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded transition duration-300">
+            Save
+        </button>
+    </div>
+</form>

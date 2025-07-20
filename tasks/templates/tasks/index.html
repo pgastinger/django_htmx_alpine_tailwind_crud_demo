@@ -1,0 +1,48 @@
+{% extends 'tasks/base.html' %}
+
+{% block content %}
+<!--
+  The main Alpine.js component now listens for the `close-modal` event on the document.
+  This is a more reliable way to catch events dispatched by HTMX.
+-->
+<div class="max-w-4xl mx-auto" 
+     x-data="{ showModal: false }" 
+     @close-modal.document="showModal = false; console.log('close-modal event caught!')">
+
+    <h1 class="text-4xl font-bold text-center text-gray-800 mb-10">Task Manager</h1>
+    
+    <div class="bg-white shadow-md rounded-lg p-6 mb-6">
+        <div class="flex justify-between items-center">
+            <h2 class="text-2xl font-semibold text-gray-700">My Tasks</h2>
+            <button @click="showModal = true" 
+                    hx-get="{% url 'task-create' %}" 
+                    hx-target="#modal-content" 
+                    hx-swap="innerHTML" 
+                    class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded transition duration-300">
+                Add Task
+            </button>
+        </div>
+    </div>
+
+    <!-- The task list listens for the `taskAdded` event to refresh itself -->
+    <div id="task-list" 
+         hx-get="{% url 'task-list' %}" 
+         hx-trigger="load, taskAdded from:body" 
+         hx-swap="innerHTML">
+        <p class="text-center text-gray-500">Loading tasks...</p>
+    </div>
+
+    <!-- Alpine.js Modal -->
+    <div x-show="showModal" 
+         class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center" 
+         @keydown.escape.window="showModal = false"
+         style="display: none;">
+        
+        <div class="bg-white rounded-lg shadow-xl w-full max-w-md" @click.self="showModal = false">
+            <div id="modal-content" class="p-8">
+                <!-- The form partial is loaded here by HTMX -->
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

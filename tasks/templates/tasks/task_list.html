@@ -1,0 +1,7 @@
+{% for task in tasks %}
+    {% include 'tasks/partials/task_detail.html' %}
+{% empty %}
+    <div class="text-center p-4 text-gray-500">
+        You have no tasks yet. Add one to get started!
+    </div>
+{% endfor %}
